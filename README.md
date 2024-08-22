@@ -1,6 +1,6 @@
-# ssu_map_test
+# itproject
 
-A new Flutter project.
+Soongsil Unversity Global Media IT Project
 
 ## Getting Started
 
