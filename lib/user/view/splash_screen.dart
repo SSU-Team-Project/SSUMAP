@@ -11,36 +11,50 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
     checkToken();
   }
 
-  void checkToken() async{
-    await Future.delayed(Duration(seconds: 2),(){
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => RootTab()), (route)=>false);
+  void checkToken() async {
+    await Future.delayed(Duration(seconds: 2), () {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (_) => RootTab()), (route) => false);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Color(0XFF60C1C2),
-          Color(0xff38829B),
-          Color(0xff38829B)
-        ])),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0XFF60C1C2),
+            Color(0xff38829B),
+            Color(0xff38829B),
+          ],
+        ),
       ),
-      Positioned(
-        right: 0,
-        left: 0,
-        bottom: 32,
-        child: Image.asset("asset/logo/main_logo.png"),
+      child: Column(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.4,
+          ),
+          SizedBox(
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: Image.asset("asset/logo/main_logo.png")),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.02,
+          ),
+          LoadingAnimationWidget.horizontalRotatingDots(
+            color: Colors.white,
+            size: MediaQuery.of(context).size.height * 0.05,
+          ),
+        ],
       ),
-    ]);
+    );
   }
 }

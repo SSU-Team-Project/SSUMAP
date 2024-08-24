@@ -24,4 +24,6 @@ class StudySpaceModel {
     this.isAirCon = false,
     this.isElectric = false,
   });
+
+
 }

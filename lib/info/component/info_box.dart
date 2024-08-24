@@ -69,33 +69,27 @@ class _InfoBlock extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Icon(Icons.circle, color: infoColor[index]),
-              ),
-              Text(
-                infoName[index],
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
-              ),
-            ],
-          ),
+          Expanded(flex:3,child: Icon(Icons.circle, color: infoColor[index])),
           Expanded(
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 32.0),
-                child: Text(
-                  info,
-                  style: TextStyle(
-                      color: Color(0xff8A8A8E),
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
+            flex: 7,
+            child: Text(
+              infoName[index],
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
             ),
           ),
+          Expanded(flex:6,child: SizedBox()),
+          Expanded(
+            flex:4,
+            child: Text(
+              textAlign: TextAlign.right,
+              info,
+              style: TextStyle(
+                  color: Color(0xff8A8A8E),
+                  fontSize: 17.0,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          Expanded(flex:2,child: SizedBox()),
         ],
       ),
     );

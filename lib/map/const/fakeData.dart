@@ -1,6 +1,7 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ssu_map_test/map/model/study_space_model.dart';
 
+// 위젯 로드용 가짜 데이터
 List<StudySpaceModel> fakeData = [
   StudySpaceModel(
     markerId: 'library',
