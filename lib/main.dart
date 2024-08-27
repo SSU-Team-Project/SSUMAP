@@ -14,6 +14,7 @@ void main() async{
     MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        // 폰트 고쳐야 됨
         fontFamily: 'Pretendard',
       ),
       home: SplashScreen(),
