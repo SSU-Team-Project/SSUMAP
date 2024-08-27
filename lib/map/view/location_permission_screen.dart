@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ssu_map_test/common/layout/default_layout.dart';
-import 'package:ssu_map_test/map/view/map_root_screen.dart';
+import '../../common/view/root_tab.dart';
 
 class LocationPermissionScreen extends StatefulWidget {
   const LocationPermissionScreen({super.key});
@@ -82,7 +82,7 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
               child: ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (_) => MapRootScreen()),
+                        MaterialPageRoute(builder: (_) => RootTab()),
                         (route) => false);
                   },
                   style: ElevatedButton.styleFrom(
