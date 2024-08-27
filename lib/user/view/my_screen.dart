@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../common/layout/default_layout.dart';
 
 class MyScreen extends StatelessWidget {

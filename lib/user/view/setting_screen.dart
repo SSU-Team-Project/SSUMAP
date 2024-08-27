@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../../common/layout/default_layout.dart';
+import 'package:ssu_map_test/common/layout/default_layout.dart';
 
 class SettingScreen extends StatelessWidget {
-  const SettingScreen({Key? key}) : super(key: key);
+  const SettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return DefaultLayout(
-      child: Container(),
-      title: '설정',
-    );
+    return DefaultLayout(title: '설정', child: Container());
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:ssu_map_test/map/view/location_permission_screen.dart';
 import 'package:ssu_map_test/map/view/map_screen.dart';
 import '../const/fakeData.dart';
 import '../utils/permission.dart';
@@ -26,13 +27,7 @@ class _MapRootScreenState extends State<MapRootScreen> {
             if (snapshot.data == '위치 권한이 허가되었습니다.') {
               return MapScreen(data: fakeData);
             } else {
-              return Center(
-                child: Text(
-                  snapshot.data!,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                ),
-              );
+              return LocationPermissionScreen();
             }
           } else {
             return const Center(child: Text('Error: 원인을 알 수 없습니다.'));

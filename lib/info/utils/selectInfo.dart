@@ -1,6 +1,6 @@
-import 'package:ssu_map_test/map/model/study_space_model.dart';
+import '../model/info_base_model.dart';
 
-String selectInfo(int index, StudySpaceModel data){
+String selectInfo(int index, InfoBaseModel data){
   if (index == 0) {
     return "${data.studySpot!} / 5";
   } else if (index == 1) {

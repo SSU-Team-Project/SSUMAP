@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
 
-class CustomDraggableSheet extends StatelessWidget {
-  final Widget child;
+class CustomDraggableSheet extends StatefulWidget {
+  final Widget preview;
+  final Widget view;
 
-  const CustomDraggableSheet({required this.child, Key? key}) : super(key: key);
+  const CustomDraggableSheet({required this.preview, required this.view, Key? key}) : super(key: key);
+
+  @override
+  _CustomDraggableSheetState createState() => _CustomDraggableSheetState();
+}
+
+class _CustomDraggableSheetState extends State<CustomDraggableSheet> {
+  late DraggableScrollableController _draggableController;
+
+  @override
+  void initState() {
+    super.initState();
+    _draggableController = DraggableScrollableController();
+    _draggableController.addListener(_checkSheetHeight);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +27,14 @@ class CustomDraggableSheet extends StatelessWidget {
       initialChildSize: 0.4,
       minChildSize: 0.1,
       maxChildSize: 0.9,
+      controller: _draggableController,
       builder: (BuildContext context, ScrollController scrollController) {
         return Column(
           children: [
             _Grip(scrollController: scrollController),
             Expanded(
               child: SingleChildScrollView(
-                child: child,
+                child: widget.preview,
                 physics: NeverScrollableScrollPhysics(),
               ),
             ),
@@ -26,6 +42,22 @@ class CustomDraggableSheet extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _checkSheetHeight() {
+    if (_draggableController.size >= 0.9) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => widget.view),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _draggableController.removeListener(_checkSheetHeight);
+    _draggableController.dispose();
+    super.dispose();
   }
 }
 
@@ -48,7 +80,7 @@ class _Grip extends StatelessWidget {
           children: [
             Expanded(child: Container(color: Color(0xffF2F2F4))),
             Container(
-              width: 36,
+              width: 40,
               height: 5,
               margin: const EdgeInsets.symmetric(vertical: 5),
               decoration: BoxDecoration(

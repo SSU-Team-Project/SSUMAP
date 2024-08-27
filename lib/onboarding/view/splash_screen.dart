@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:ssu_map_test/onboarding/view/login_screen.dart';
 
 import '../../common/view/root_tab.dart';
 
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void checkToken() async {
     await Future.delayed(Duration(seconds: 2), () {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => RootTab()), (route) => false);
+          MaterialPageRoute(builder: (_) => LoginScreen()), (route) => false);
     });
   }
 

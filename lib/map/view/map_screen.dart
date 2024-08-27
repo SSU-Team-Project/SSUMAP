@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ssu_map_test/info/view/info_screen.dart';
+import 'package:ssu_map_test/info/view/preview_screen.dart';
 import 'package:ssu_map_test/map/component/custom_draggable_sheet.dart';
 import 'package:ssu_map_test/map/const/data.dart';
+import '../../info/model/info_model.dart';
 import '../const/fakeData.dart';
-import '../model/study_space_model.dart';
 import 'package:collection/collection.dart';
 
 class MapScreen extends StatefulWidget {
-  final List<StudySpaceModel> data;
+  final List<InfoModel> data;
+
   const MapScreen({required this.data, Key? key}) : super(key: key);
 
   @override
@@ -45,7 +47,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   // 마커 생성
-  Set<Marker> _createMarkers(BuildContext context, List<StudySpaceModel> data) {
+  Set<Marker> _createMarkers(BuildContext context, List<InfoModel> data) {
     if (customIcons.isEmpty) {
       return {};
     }
@@ -65,7 +67,12 @@ class _MapScreenState extends State<MapScreen> {
               borderRadius: BorderRadius.zero,
             ),
             builder: (_) {
-              return CustomDraggableSheet(child: InfoScreen(data: e,title: e.title,));
+              return CustomDraggableSheet(
+                  preview: PreviewScreen(
+                    data: e,
+                    title: e.title,
+                  ),
+                  view: InfoScreen(data: e, title: e.title));
             },
           );
         },
