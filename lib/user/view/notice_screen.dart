@@ -13,7 +13,7 @@ class NoticeScreen extends StatelessWidget {
           ListTile(
             leading: CircleAvatar(
               child: SvgPicture.asset(
-                'assets/icon/ssu/ssu.svg',
+                'asset/icon/ssu/ssu.svg',
                 height: 12,
                 color: Theme.of(context).colorScheme.primary,
               ),
