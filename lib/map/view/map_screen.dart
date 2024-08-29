@@ -18,15 +18,11 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  List<BitmapDescriptor> customIcons = [];
+  List<String> titles = [];
 
-  Future<void> _loadMarkerIcons() async {
+  Future<void> _loadMarkerTitles() async {
     for (var space in fakeData) {
-      final icon = await BitmapDescriptor.fromAssetImage(
-        const ImageConfiguration(devicePixelRatio: 2.5),
-        space.iconImage,
-      );
-      customIcons.add(icon);
+      titles.add(space.title);
     }
     setState(() {});
   }
@@ -34,7 +30,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
-    _loadMarkerIcons();
+    _loadMarkerTitles();
   }
 
   @override
@@ -48,7 +44,7 @@ class _MapScreenState extends State<MapScreen> {
 
   // 마커 생성
   Set<Marker> _createMarkers(BuildContext context, List<InfoModel> data) {
-    if (customIcons.isEmpty) {
+    if (titles.isEmpty) {
       return {};
     }
 
@@ -56,7 +52,7 @@ class _MapScreenState extends State<MapScreen> {
       return Marker(
         markerId: MarkerId(e.markerId),
         position: e.position,
-        icon: customIcons[index],
+        infoWindow: InfoWindow(title: titles[index]),
         onTap: () {
           // 바텀 시트 생성
           showModalBottomSheet(
