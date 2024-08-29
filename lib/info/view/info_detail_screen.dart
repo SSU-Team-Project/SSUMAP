@@ -22,7 +22,7 @@ class InfoDetailScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 16.0),
-              Title(title: '진리관-1층'),
+              Title(title: data.title),
               SizedBox(height: 8.0),
               SubTitle(subTitle: '사진'),
               InfoImage(data: data),
