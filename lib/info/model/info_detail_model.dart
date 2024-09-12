@@ -1,4 +1,4 @@
-import 'package:ssu_map_test/info/model/info_base_model.dart';
+import 'package:ssumap/info/model/info_base_model.dart';
 
 class InfoDetailModel extends InfoBaseModel {
   final String info;

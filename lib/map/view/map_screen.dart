@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:ssu_map_test/info/view/info_screen.dart';
-import 'package:ssu_map_test/info/view/preview_screen.dart';
-import 'package:ssu_map_test/map/component/custom_draggable_sheet.dart';
-import 'package:ssu_map_test/map/const/data.dart';
+import 'package:ssumap/info/view/info_screen.dart';
+import 'package:ssumap/info/view/preview_screen.dart';
+import 'package:ssumap/map/component/custom_draggable_sheet.dart';
+import 'package:ssumap/map/const/data.dart';
 import '../../info/model/info_model.dart';
 import '../const/fakeData.dart';
 import 'package:collection/collection.dart';

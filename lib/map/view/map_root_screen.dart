@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:ssu_map_test/map/view/location_permission_screen.dart';
-import 'package:ssu_map_test/map/view/map_screen.dart';
+import 'package:ssumap/map/view/location_permission_screen.dart';
+import 'package:ssumap/map/view/map_screen.dart';
 import '../const/fakeData.dart';
 import '../utils/permission.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ssu_map_test/info/const/style.dart';
-import 'package:ssu_map_test/info/utils/selectInfo.dart';
+import 'package:ssumap/info/const/style.dart';
+import 'package:ssumap/info/utils/selectInfo.dart';
 import '../const/data.dart';
 import '../model/info_base_model.dart';
 

@@ -1,4 +1,4 @@
-# ssu_map_test
+# ssumap
 
 A new Flutter project.
 

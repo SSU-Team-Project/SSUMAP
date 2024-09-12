@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ssu_map_test/common/layout/default_layout.dart';
+import 'package:ssumap/common/layout/default_layout.dart';
 import '../../common/view/root_tab.dart';
 
 class LocationPermissionScreen extends StatefulWidget {

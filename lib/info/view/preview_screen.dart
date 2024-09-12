@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide Title;
-import 'package:ssu_map_test/info/component/spec_info_stair_list.dart';
+import 'package:ssumap/info/component/spec_info_stair_list.dart';
 import '../component/useful_info_box.dart';
 import '../component/info_image.dart';
 import '../component/sub_title.dart';

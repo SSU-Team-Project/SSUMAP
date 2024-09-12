@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide Title;
-import 'package:ssu_map_test/info/component/useful_info_box.dart';
-import 'package:ssu_map_test/info/component/info_image.dart';
-import 'package:ssu_map_test/info/model/info_detail_model.dart';
+import 'package:ssumap/info/component/useful_info_box.dart';
+import 'package:ssumap/info/component/info_image.dart';
+import 'package:ssumap/info/model/info_detail_model.dart';
 import '../../common/layout/default_layout.dart';
 import '../component/info_box.dart';
 import '../component/sub_title.dart';

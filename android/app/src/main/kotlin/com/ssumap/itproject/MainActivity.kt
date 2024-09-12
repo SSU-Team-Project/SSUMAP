@@ -1,4 +1,4 @@
-package com.example.ssu_map_test
+package com.ssumap.itproject
 
 import io.flutter.embedding.android.FlutterActivity
 

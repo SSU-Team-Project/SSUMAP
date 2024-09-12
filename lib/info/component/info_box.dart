@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ssu_map_test/info/const/style.dart';
-import 'package:ssu_map_test/info/model/info_detail_model.dart';
+import 'package:ssumap/info/const/style.dart';
+import 'package:ssumap/info/model/info_detail_model.dart';
 
 class InfoBox extends StatelessWidget {
   final InfoDetailModel data;

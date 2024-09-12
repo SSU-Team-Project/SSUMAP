@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "640944887113",
+    "project_id": "it-project-5e334",
+    "storage_bucket": "it-project-5e334.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640944887113:android:2580cc8a45a3bf9fe67698",
+        "android_client_info": {
+          "package_name": "com.ssumap.itproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640944887113-duqpepa73cjn8dpsnik4uab0ejj90d97.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssumap.itproject",
+            "certificate_hash": "3b5d0feb735cfac34f76bc4f4fb8a48c408d9008"
+          }
+        },
+        {
+          "client_id": "640944887113-i2h984mtj7tfa8iqj6q8pqhhcdiofem2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssumap.itproject",
+            "certificate_hash": "3af6374e7c7da8045504aba9a9202b476a561515"
+          }
+        },
+        {
+          "client_id": "640944887113-vk6vaeej4m6c2pfctv89rqdftiumkmmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsWJxzH98xSHqNRoABL8tEQcFx5A7pnfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640944887113-vk6vaeej4m6c2pfctv89rqdftiumkmmq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "640944887113-v7o6gu2oscpoqk6nl24oi843pbjt8hnf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ssumap.itproject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

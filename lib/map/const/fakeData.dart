@@ -4,7 +4,7 @@
  */
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:ssu_map_test/info/model/info_detail_model.dart';
+import 'package:ssumap/info/model/info_detail_model.dart';
 import '../../info/model/info_model.dart';
 
 // 위젯 로드용 가짜 데이터

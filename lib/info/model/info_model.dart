@@ -1,6 +1,6 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:ssu_map_test/info/model/info_base_model.dart';
-import 'package:ssu_map_test/info/model/info_detail_model.dart';
+import 'package:ssumap/info/model/info_base_model.dart';
+import 'package:ssumap/info/model/info_detail_model.dart';
 
 class InfoModel extends InfoBaseModel {
   String markerId;

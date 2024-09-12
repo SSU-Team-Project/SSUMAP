@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide Title;
-import 'package:ssu_map_test/info/view/preview_screen.dart';
+import 'package:ssumap/info/view/preview_screen.dart';
 import '../../common/layout/default_layout.dart';
 import '../model/info_model.dart';
 

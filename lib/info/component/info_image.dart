@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:ssu_map_test/info/model/info_detail_model.dart';
+import 'package:ssumap/info/model/info_detail_model.dart';
 import '../model/info_base_model.dart';
 import '../model/info_model.dart';
 import '../view/info_detail_screen.dart';
