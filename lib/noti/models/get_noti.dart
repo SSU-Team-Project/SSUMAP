@@ -1,22 +1,15 @@
-class Test {
-  final int id;
-  final int rank;
-  final String name;
+class Noti {
+  String? content;
+  String? timestamp;
 
-  Test({required this.id, required this.rank, required this.name});
+  Noti({
+    this.content,
+    this.timestamp,
+  });
 
-  factory Test.fromJson(Map<String, dynamic> json) {
-    return Test(
-      id: json["id"],
-      rank: json["rank"],
-      name: json["name"],
-    );
-  }
-  Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "rank": rank,
-      "name": name,
-    };
-  }
+  Noti.fromJson(Map<String, dynamic> json)
+      : this(
+          content: json['content'],
+          timestamp: json['timestamp'],
+        );
 }

@@ -7,20 +7,18 @@ import 'package:ssumap/noti/models/get_noti.dart';
 class NoticeScreen extends StatelessWidget {
   const NoticeScreen({Key? key}) : super(key: key);
 
-  Future<List<Test>> _fromFirestore() async {
-    FirebaseFirestore _firestore = FirebaseFirestore.instance;
-    QuerySnapshot<Map<String, dynamic>> _snapshot =
-    await _firestore.collection("read_test").get();
-    List<Test> _result =
-    _snapshot.docs.map((e) => Test.fromJson(e.data())).toList();
-    return _result;
+  Future<List<Noti>> _fromFirestore() async {
+    final snapshot = await FirebaseFirestore.instance.collection('ex').get();
+    return snapshot.docs.map((doc) => Noti.fromJson(doc.data())).toList();
   }
+
   @override
   Widget build(BuildContext context) {
+
     return DefaultLayout(
       child: Column(
         children: [
-          FutureBuilder<List<Test>>(
+          FutureBuilder<List<Noti>>(
             future: _fromFirestore(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -36,7 +34,7 @@ class NoticeScreen extends StatelessWidget {
                           color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
-                      title: Text(snapshot.data![index].name),
+                      title: Text(snapshot.data![index].content ?? 'No Content'),
                       subtitle: Text('총학 행사'),
                       trailing: Text('Today'),
                     );
