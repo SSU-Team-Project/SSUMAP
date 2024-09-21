@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../../map/view/map_root_screen.dart';
 import '../../user/view/favorite_screen.dart';
 import '../../user/view/my_screen.dart';
-import '../../user/view/notice_screen.dart';
-import '../../user/view/setting_screen.dart';
+import '../../noti/view/notice_screen.dart';
 
 class RootTab extends StatefulWidget {
   const RootTab({Key? key}) : super(key: key);
@@ -20,7 +19,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    controller = TabController(length: 5, vsync: this, initialIndex: 2);
+    controller = TabController(length: 4, vsync: this, initialIndex: 2);
     controller.addListener(tabListener);
   }
 
@@ -48,7 +47,6 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
             MyScreen(),
             MapRootScreen(),
             NoticeScreen(),
-            SettingScreen(),
           ],
         ),
       ),
@@ -72,8 +70,6 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
               icon: Icon(Icons.home), label: '홈'),
           BottomNavigationBarItem(
               icon: Icon(Icons.notification_add), label: '알림'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: '설정'),
         ],
       ),
     );

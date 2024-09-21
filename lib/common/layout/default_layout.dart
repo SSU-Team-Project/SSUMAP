@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ssumap/onboarding/view/setting_screen.dart';
 
 class DefaultLayout extends StatelessWidget {
   final Widget child;
@@ -20,7 +21,7 @@ class DefaultLayout extends StatelessWidget {
       backgroundColor: backgroundColor ?? Colors.white,
       body: Column(
         children: [
-          renderAppbar(),
+          renderAppbar(context),
           child,
         ],
       ),
@@ -28,7 +29,7 @@ class DefaultLayout extends StatelessWidget {
     );
   }
 
-  Widget renderAppbar() {
+  Widget renderAppbar(BuildContext context) {
     if (title == null) {
       return Container();
     } else {
@@ -37,13 +38,21 @@ class DefaultLayout extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              title!,
-              style: TextStyle(
-                fontSize: 32.0,
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title!,
+                  style: TextStyle(
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+                if(title == 'MY')IconButton(onPressed: (){Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => SettingScreen()),
+                );}, icon: Icon(Icons.menu, size: 32.0,))
+              ],
             ),
           ],
         ),

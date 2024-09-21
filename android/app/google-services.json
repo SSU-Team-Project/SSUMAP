@@ -14,19 +14,27 @@
       },
       "oauth_client": [
         {
-          "client_id": "640944887113-duqpepa73cjn8dpsnik4uab0ejj90d97.apps.googleusercontent.com",
+          "client_id": "640944887113-g4a6qqn6t7v22onlu5iasgq756am41sb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.ssumap.itproject",
-            "certificate_hash": "3b5d0feb735cfac34f76bc4f4fb8a48c408d9008"
+            "certificate_hash": "3c1e4e4c39148f5b86929ca20124934b0c31294f"
           }
         },
         {
-          "client_id": "640944887113-i2h984mtj7tfa8iqj6q8pqhhcdiofem2.apps.googleusercontent.com",
+          "client_id": "640944887113-kafjuc4hh9pp2j0ouk2ojeret2mt536n.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.ssumap.itproject",
             "certificate_hash": "3af6374e7c7da8045504aba9a9202b476a561515"
+          }
+        },
+        {
+          "client_id": "640944887113-lslhlomlb8v68okocgr53qas8u1dop1d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssumap.itproject",
+            "certificate_hash": "3b5d0feb735cfac34f76bc4f4fb8a48c408d9008"
           }
         },
         {

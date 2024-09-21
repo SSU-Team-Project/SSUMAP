@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../common/layout/default_layout.dart';
 import '../../common/view/root_tab.dart';
-import '../component/custom_text_form_field.dart';
+import '../component/google_login.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,103 +14,154 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String userName = '';
-  String password = '';
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  // 구글 로그인 처리
+  Future<void> _signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        return;
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+      await googleUser.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      UserCredential userCredential =
+      await _auth.signInWithCredential(credential);
+
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => RootTab()),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Google 로그인 실패")),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
-      child: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        child: SafeArea(
-          top: true,
-          bottom: false,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.125,
-                ),
-                _Title(),
-                CustomTextFormField(
-                  hintText: 'Email',
-                  onChange: (String value) {
-                    userName = value;
-                  },
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                CustomTextFormField(
-                  hintText: 'Password',
-                  onChange: (String value) {
-                    password = value;
-                  },
-                  obscureText: true,
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                _LoginButton(),
-              ],
-            ),
+      child: Column(
+        children: [
+          _IntroArea(),
+          _LoginArea(
+            signInWithGoogle: _signInWithGoogle,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _IntroArea extends StatelessWidget {
+  const _IntroArea({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipPath(
+      clipper: TopWaveClipper(),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.7,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0XFFAAD6FF),
+              Color(0xff1790FF),
+            ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _Title extends StatefulWidget {
-  const _Title({super.key});
-
-  @override
-  State<_Title> createState() => _TitleState();
-}
-
-class _TitleState extends State<_Title> {
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      'SSUMAP',
-      style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.w600),
-      textAlign: TextAlign.center,
-    );
-  }
-}
-
-class _LoginButton extends StatefulWidget {
-  const _LoginButton({super.key});
-
-  @override
-  State<_LoginButton> createState() => _LoginButtonState();
-}
-
-class _LoginButtonState extends State<_LoginButton> {
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) => RootTab()));
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xff0085FF),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        padding: EdgeInsets.symmetric(vertical: 14.0),
-      ),
-      child: Text(
-        '로그인',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 18.0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Hero(
+              tag: 'logo', // 같은 Hero 태그 적용
+              child: Image.asset(
+                "asset/logo/main_logo.png",
+                height: MediaQuery.of(context).size.height * 0.2,
+              ),
+            ),
+            Text(
+              'SSUMAP',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 32.0,
+              ),
+            ),
+            Text(
+              '내가 커스텀하는\n숭실대 스터디 공간 지도',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 14.0,
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.1,
+            ),
+          ],
         ),
       ),
     );
   }
+}
+
+class _LoginArea extends StatelessWidget {
+  final GestureTapCallback signInWithGoogle;
+  const _LoginArea({required this.signInWithGoogle, Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      height: MediaQuery.of(context).size.height * 0.3,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GoogleLogin(signInWithGoogle: signInWithGoogle),
+        ],
+      ),
+    );
+  }
+}
+
+// 곡선 깎기 위젯
+class TopWaveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+
+    // 시작점
+    path.lineTo(0.0, size.height);
+    // 중간점
+    var firstControlPoint = Offset(size.width / 2, size.height - 40);
+    // 끝점
+    var firstEndPoint = Offset(size.width, size.height);
+
+    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
+        firstEndPoint.dx, firstEndPoint.dy);
+
+    path.lineTo(size.width, 0.0);
+
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
