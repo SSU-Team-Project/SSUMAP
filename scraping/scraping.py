@@ -10,8 +10,8 @@ cred = credentials.Certificate(r'firebase_key.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-username = "01049923898"  # ** 인스타그램 로그인 아이디
-password = "ssumapyeah"  # ** 인스타그램 비밀번호
+username = "***"  # ** 인스타그램 로그인 아이디
+password = "***"  # ** 인스타그램 비밀번호
 target_user = "ussum_64th"  # 타겟 인스타그램 유저
 driver_path = r"/opt/homebrew/bin/chromedriver"  # ** 크롬 드라이버 경로
 
