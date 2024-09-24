@@ -8,7 +8,7 @@ class NoticeScreen extends StatelessWidget {
   const NoticeScreen({Key? key}) : super(key: key);
 
   Future<List<Noti>> _fromFirestore() async {
-    final snapshot = await FirebaseFirestore.instance.collection('ex').get();
+    final snapshot = await FirebaseFirestore.instance.collection('instagram').get();
     return snapshot.docs.map((doc) => Noti.fromJson(doc.data())).toList();
   }
 

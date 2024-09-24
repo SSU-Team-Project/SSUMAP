@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Noti {
   String? content;
-  String? timestamp;
+  Timestamp? timestamp;
 
   Noti({
     this.content,
