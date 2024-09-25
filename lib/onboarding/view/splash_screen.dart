@@ -20,6 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void checkAuthState() async {
+    await Future.delayed(Duration(seconds: 2));
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user != null) {
         Navigator.of(context).pushReplacement(

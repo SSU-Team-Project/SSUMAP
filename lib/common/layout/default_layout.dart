@@ -49,14 +49,37 @@ class DefaultLayout extends StatelessWidget {
                   ),
                   textAlign: TextAlign.start,
                 ),
-                if(title == 'MY')IconButton(onPressed: (){Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => SettingScreen()),
-                );}, icon: Icon(Icons.menu, size: 32.0,))
+                if (title == 'MY')
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(_createRoute());
+                    },
+                    icon: Icon(Icons.menu, size: 32.0),
+                  ),
               ],
             ),
           ],
         ),
       );
     }
+  }
+
+  // 새로운 화면으로 전환할 때의 애니메이션을 정의하는 함수
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => SettingScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1.0, 0.0); // 오른쪽에서 시작
+        const end = Offset.zero; // 중앙으로 이동
+        const curve = Curves.ease;
+
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 }

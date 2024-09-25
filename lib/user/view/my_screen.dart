@@ -8,30 +8,16 @@ class MyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
-      child: Center(
+      child: SizedBox(
+        height: 520,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FluttermojiCircleAvatar(
-                  radius: 100,
-                ),
-                const SizedBox(width: 16),
-                // 수정 FAB
-                FloatingActionButton.extended(
-                  onPressed: () {
-                    // TODO : onPressed : 상점으로
-
-                  },
-                  label: const Text('수정'),
-                  icon: const Icon(Icons.checkroom),
-                ),
-
-              ],
+            Image.asset(
+              'asset/image/coming_soon.png',
+              fit: BoxFit.fill,
             ),
-            FluttermojiCustomizer(),
           ],
         ),
       ),

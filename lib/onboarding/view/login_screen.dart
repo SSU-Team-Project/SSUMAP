@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../common/layout/default_layout.dart';
 import '../../common/view/root_tab.dart';
@@ -40,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
         MaterialPageRoute(builder: (_) => RootTab()),
       );
     } catch (e) {
+      print(e);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Google 로그인 실패")),
       );
@@ -133,6 +133,7 @@ class _LoginArea extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GoogleLogin(signInWithGoogle: signInWithGoogle),
+          SizedBox(height: 40.0),
         ],
       ),
     );

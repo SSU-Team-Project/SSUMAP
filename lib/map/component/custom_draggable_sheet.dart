@@ -45,7 +45,7 @@ class _CustomDraggableSheetState extends State<CustomDraggableSheet> {
   }
 
   void _checkSheetHeight() {
-    if (_draggableController.size >= 0.9) {
+    if (_draggableController.size >= 0.5) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => widget.view),

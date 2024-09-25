@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:ssumap/common/view/root_tab.dart';
 import 'package:ssumap/options/firebase_options.dart';
 import 'package:ssumap/onboarding/view/splash_screen.dart';
 
@@ -11,7 +12,6 @@ void main() async{
   );
 
   String? _fcmToken = await FirebaseMessaging.instance.getToken();
-  print('TOKEN: $_fcmToken');
 
   runApp(
     MaterialApp(

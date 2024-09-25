@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:ssumap/common/layout/default_layout.dart';
 import 'package:ssumap/onboarding/view/login_screen.dart';
 
@@ -20,7 +21,35 @@ class SettingScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(height: 6.0,color: Colors.grey.shade100,),
+          Container(
+            height: 6.0,
+            color: Colors.grey.shade100,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0, top:12.0,),
+            child: FutureBuilder<String?>(
+                future: _getUserName(),
+                builder: (context, snapshot) {
+                  final idTextStyle = TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w600);
+                  if (snapshot.data == ConnectionState.waiting) {
+                    return const Skeletonizer(
+                      child: SizedBox(
+                        width: 100,
+                        height: 25,
+                      ),
+                    );
+                  } else if (snapshot.hasError) {
+                    return const Text('에러 발생');
+                  } else if (!snapshot.hasData || snapshot.data == null) {
+                    return const Text('구글 계정 이름이 존재하지않습니다.');
+                  } else {
+                    return Text('${snapshot.data}님', style: idTextStyle);
+                  }
+                }),
+          ),
           Row(
             children: [
               Expanded(
@@ -58,5 +87,13 @@ class SettingScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<String?> _getUserName() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      return user.displayName;
+    }
+    return null;
   }
 }
