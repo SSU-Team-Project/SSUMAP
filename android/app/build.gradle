@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.ssumap.itproject"
     compileSdkVersion 34  // compileSdk 버전을 명시적으로 설정
-    ndkVersion = "22.1.7171670"  // 필요 시 ndkVersion을 명시적으로 설정
+    ndkVersion = "25.1.8937393"  // 필요 시 ndkVersion을 명시적으로 설정
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
