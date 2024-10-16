@@ -12,7 +12,6 @@ void main() async{
   );
 
   String? _fcmToken = await FirebaseMessaging.instance.getToken();
-  print('TOKEN: $_fcmToken');
 
   if (_fcmToken != null) {
     await saveTokenToFirestore(_fcmToken);
