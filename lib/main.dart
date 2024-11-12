@@ -2,11 +2,23 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:ssumap/options/firebase_options.dart';
 import 'package:ssumap/onboarding/view/splash_screen.dart';
 
-void main() async{
+const characterBox = 'characterBox';
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox(characterBox);
+
+  // 어플 첫 실행 시 캐릭터 첫번째로 설정
+  final box = Hive.box(characterBox);
+  if (box.isEmpty) {
+    box.put('index', 1);
+  }
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

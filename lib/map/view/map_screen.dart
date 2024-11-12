@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:hive/hive.dart';
 import 'package:ssumap/info/view/info_screen.dart';
 import 'package:ssumap/info/view/preview_screen.dart';
 import 'package:ssumap/map/component/custom_draggable_sheet.dart';
 import 'package:ssumap/map/const/data.dart';
 import 'package:ssumap/map/view/map_root_screen.dart';
 import '../../info/model/info_model.dart';
+import '../../main.dart';
 import '../const/fakeData.dart';
 import 'package:collection/collection.dart';
 
@@ -34,6 +36,22 @@ class _MapScreenState extends State<MapScreen> {
     setState(() {});
   }
 
+  BitmapDescriptor? _currentLocationIcon;
+
+  List<String> character = ['ssu_boy', 'ssu_girl',  'ssu_white_girl','ssu_red_girl',];
+
+  Future<void> _loadCustomMarkerIcon() async {
+    final box = await Hive.openBox(characterBox);
+    final index = box.get('index');
+    final icon = await BitmapDescriptor.fromAssetImage(
+      const ImageConfiguration(size: Size(2, 4)), // 원하는 크기로 설정
+      'asset/character/${character[index]}.png',
+    );
+    setState(() {
+      _currentLocationIcon = icon;
+    });
+  }
+
   // 거리 계산: 두 위치 사이의 거리를 계산
   double _calculateDistance(LatLng start, LatLng end) {
     return Geolocator.distanceBetween(
@@ -47,6 +65,7 @@ class _MapScreenState extends State<MapScreen> {
     super.initState();
     _loadMarkerTitles();
     _getCurrentLocation();
+    _loadCustomMarkerIcon();
   }
 
   @override
@@ -57,7 +76,7 @@ class _MapScreenState extends State<MapScreen> {
           GoogleMap(
             initialCameraPosition: initialPosition,
             markers: _createMarkers(context, widget.data),
-            myLocationEnabled: true,
+            myLocationEnabled: false,
             myLocationButtonEnabled: false,
             mapToolbarEnabled: false,
             onMapCreated: (GoogleMapController controller) {
@@ -117,7 +136,7 @@ class _MapScreenState extends State<MapScreen> {
       markers.add(Marker(
         markerId: MarkerId("current_location"),
         position: _currentPosition!,
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+        icon: _currentLocationIcon!, // 커스텀 아이콘 적용
         infoWindow: InfoWindow(title: "현재 위치"),
       ));
     }
@@ -133,7 +152,7 @@ class _MapScreenState extends State<MapScreen> {
       LatLng newPosition = LatLng(position.latitude, position.longitude);
 
       double distance = _calculateDistance(_initialPosition, newPosition);
-
+      _currentPosition = newPosition;
       if (distance <= allowedRadius) {
         _currentPosition = newPosition;
       } else {
