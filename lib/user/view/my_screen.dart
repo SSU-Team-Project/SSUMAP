@@ -45,7 +45,7 @@ class _MyScreenState extends State<MyScreen> {
                 GestureDetector(
                   onTap: () => _onCardTap(0),
                   child: CharacterCard(
-                    imgUrl: 'asset/character/ssu_boy.png',
+                    imgUrl: 'asset/character/ssu_boy_.png',
                     isActive: activeIndex == 0,
                     activeColor: '0085FF',
                     bgColor: 'A7AAF2',
@@ -55,7 +55,7 @@ class _MyScreenState extends State<MyScreen> {
                 GestureDetector(
                   onTap: () => _onCardTap(1),
                   child: CharacterCard(
-                    imgUrl: 'asset/character/ssu_girl.png',
+                    imgUrl: 'asset/character/ssu_girl_.png',
                     isActive: activeIndex == 1,
                     activeColor: '004324',
                     bgColor: '8DE3BB',
@@ -70,7 +70,7 @@ class _MyScreenState extends State<MyScreen> {
                 GestureDetector(
                   onTap: () => _onCardTap(2),
                   child: CharacterCard(
-                    imgUrl: 'asset/character/ssu_white_girl.png',
+                    imgUrl: 'asset/character/ssu_white_girl_.png',
                     isActive: activeIndex == 2,
                     activeColor: '8A8A8A',
                     bgColor: 'F9F9F9',
@@ -80,7 +80,7 @@ class _MyScreenState extends State<MyScreen> {
                 GestureDetector(
                   onTap: () => _onCardTap(3),
                   child: CharacterCard(
-                    imgUrl: 'asset/character/ssu_red_girl.png',
+                    imgUrl: 'asset/character/ssu_red_girl_.png',
                     isActive: activeIndex == 3,
                     activeColor: 'FF7171',
                     bgColor: 'FCCDCD',
