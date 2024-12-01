@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "640944887113",
+    "firebase_url": "https://it-project-5e334-default-rtdb.firebaseio.com",
     "project_id": "it-project-5e334",
     "storage_bucket": "it-project-5e334.appspot.com"
   },
@@ -14,11 +15,27 @@
       },
       "oauth_client": [
         {
+          "client_id": "640944887113-81i17jqbcdfi5siii95mj4on7te8lodd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssumap.itproject",
+            "certificate_hash": "b2e8c61e70065a5a17ea8228884d90745228c218"
+          }
+        },
+        {
           "client_id": "640944887113-g4a6qqn6t7v22onlu5iasgq756am41sb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.ssumap.itproject",
             "certificate_hash": "3c1e4e4c39148f5b86929ca20124934b0c31294f"
+          }
+        },
+        {
+          "client_id": "640944887113-gvn9qot7t86kkb76rhfgdcbv2sv4c7n0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssumap.itproject",
+            "certificate_hash": "08d8e763fac05bd229e572d5359e5d3c6e0dc8ef"
           }
         },
         {
@@ -35,6 +52,14 @@
           "android_info": {
             "package_name": "com.ssumap.itproject",
             "certificate_hash": "3b5d0feb735cfac34f76bc4f4fb8a48c408d9008"
+          }
+        },
+        {
+          "client_id": "640944887113-mremf5f5n79juudpt0ieepnflmjs2cse.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssumap.itproject",
+            "certificate_hash": "f966423e75614986061027dd68284d2f678e39e8"
           }
         },
         {

@@ -28,17 +28,18 @@ android {
     }
 
     signingConfigs {
+
         debugKey {
             storeFile file('debug.keystore')
             storePassword '123123'
             keyAlias 'taetae'
             keyPassword '123123'
         }
-        releaseKey {
-            storeFile file(RELEASE_KEY_STORE)
-            storePassword RELEASE_KEY_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_ALIAS_PASSWORD
+        release {
+            storeFile file('C:\\Users\\sejon\\upload-keystore.jks') // 키스토어 파일 경로 (키스토어 파일을 프로젝트의 android/app 폴더에 두었다면 해당 경로)
+            storePassword '123456' // 생성한 키스토어 파일의 암호 입력
+            keyAlias 'upload' // 생성 시 사용한 키 별칭
+            keyPassword '123456' // 키 암호
         }
     }
 
@@ -46,7 +47,7 @@ android {
         release {
             minifyEnabled false
             shrinkResources false
-            signingConfig signingConfigs.releaseKey
+            signingConfig signingConfigs.release
         }
     }
 }
