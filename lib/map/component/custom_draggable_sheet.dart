@@ -29,23 +29,22 @@ class _CustomDraggableSheetState extends State<CustomDraggableSheet> {
       maxChildSize: 0.9,
       controller: _draggableController,
       builder: (BuildContext context, ScrollController scrollController) {
-        return Column(
-          children: [
-            _Grip(scrollController: scrollController),
-            Expanded(
-              child: SingleChildScrollView(
-                child: widget.preview,
-                physics: NeverScrollableScrollPhysics(),
-              ),
-            ),
-          ],
+        return SingleChildScrollView(
+          controller: scrollController,
+          child: Column(
+            children: [
+              _Grip(),
+              widget.preview,
+              SizedBox(height: 20),
+            ],
+          ),
         );
       },
     );
   }
 
   void _checkSheetHeight() {
-    if (_draggableController.size >= 0.5) {
+    if (_draggableController.size >= 0.55) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => widget.view),
@@ -62,35 +61,30 @@ class _CustomDraggableSheetState extends State<CustomDraggableSheet> {
 }
 
 class _Grip extends StatelessWidget {
-  final ScrollController scrollController;
-  const _Grip({required this.scrollController, Key? key}) : super(key: key);
+  const _Grip({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onVerticalDragUpdate: (details) {
-        scrollController.position.moveTo(
-          scrollController.position.pixels - details.primaryDelta!,
-        );
-      },
-      child: SingleChildScrollView(
-        controller: scrollController,
-        child: Row(
-          children: [
-            Expanded(child: Container(color: Color(0xffF2F2F4))),
-            Container(
-              width: 40,
-              height: 5,
-              margin: const EdgeInsets.symmetric(vertical: 5),
-              decoration: BoxDecoration(
-                color: Color(0xffCDCDCA),
-                borderRadius: BorderRadius.circular(10),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(child: Container(color: Color(0xffF2F2F4))),
+              Container(
+                width: 40,
+                height: 5,
+                margin: const EdgeInsets.symmetric(vertical: 5),
+                decoration: BoxDecoration(
+                  color: Color(0xffCDCDCA),
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
-            ),
-            Expanded(child: Container(color: Color(0xffF2F2F4))),
-          ],
-        ),
+              Expanded(child: Container(color: Color(0xffF2F2F4))),
+            ],
+          ),
+        ],
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../map/view/map_root_screen.dart';
-import '../../user/view/favorite_screen.dart';
+import '../../user/view/manual_screen.dart';
 import '../../user/view/my_screen.dart';
 import '../../noti/view/notice_screen.dart';
 
@@ -43,7 +43,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
           physics: NeverScrollableScrollPhysics(),
           controller: controller,
           children: [
-            FavoriteScreen(),
+            ManualScreen(),
             MyScreen(),
             MapRootScreen(),
             NoticeScreen(),
@@ -63,7 +63,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
         currentIndex: index,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.star), label: '즐겨찾기'),
+              icon: Icon(Icons.live_help), label: '설명서'),
           BottomNavigationBarItem(
               icon: Icon(Icons.person), label: 'MY'),
           BottomNavigationBarItem(

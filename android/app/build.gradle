@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.ssumap.itproject"
     compileSdkVersion 34  // compileSdk 버전을 명시적으로 설정
-    ndkVersion = "22.1.7171670"  // 필요 시 ndkVersion을 명시적으로 설정
+    ndkVersion = "25.1.8937393"  // 필요 시 ndkVersion을 명시적으로 설정
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -27,11 +27,27 @@ android {
         versionName "1.0"
     }
 
+    signingConfigs {
+
+        debugKey {
+            storeFile file('debug.keystore')
+            storePassword '123123'
+            keyAlias 'taetae'
+            keyPassword '123123'
+        }
+        release {
+            storeFile file('C:\\Users\\sejon\\upload-keystore.jks') // 키스토어 파일 경로 (키스토어 파일을 프로젝트의 android/app 폴더에 두었다면 해당 경로)
+            storePassword '123456' // 생성한 키스토어 파일의 암호 입력
+            keyAlias 'upload' // 생성 시 사용한 키 별칭
+            keyPassword '123456' // 키 암호
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             shrinkResources false
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }
